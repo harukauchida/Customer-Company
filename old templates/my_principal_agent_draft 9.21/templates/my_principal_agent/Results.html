@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+
+
+        {% if group.company_chosen %}
+            <p>
+            {% if player.role == 'customer' %}
+            You <strong>chose</strong> the company.
+            {% else %}
+            The customer <strong>chose</strong> your company.
+            {% endif %}
+            <p>
+
+
+            <p>In addition to your initial {{ Constants.base_pay }}, your payoff is <strong>{{player.payoff}}</strong>.</p>
+        {% else %}
+            <p>
+            {% if player.role == 'customer' %}
+                You <strong>rejected</strong> the company.
+                Thus you received <strong>{{ Constants.customer_reject_pay }}</strong>.
+                Adding your initial {{ Constants.base_pay }}, your payoff is <strong>{{player.payoff}}</strong>.
+            {% else %}
+            The customer <strong>rejected</strong> your company.
+                Thus you have received nothing. Your payoff equals initial <strong>{{player.payoff}}</strong>.
+            {% endif %}
+            </p>
+        {% endif %}
+
+    <p>{% next_button %}</p>
+
+    {% include Constants.instructions_template %}
+
+{% endblock %}

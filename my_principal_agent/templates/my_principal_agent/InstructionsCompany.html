@@ -1,0 +1,43 @@
+{% extends "global/Page.html" %}
+{% load otree_tags %}
+
+{% block title %}Welcome to the study!{% endblock %}
+
+{% block content %}
+<div class="instructions well well-lg">
+
+    <h3 class="panel-sub-heading">
+        You have been assigned the role of Company
+    </h3>
+    <br>
+    <p>
+You have been matched randomly and anonymously with other study participants. There are two roles in this study: Customer and Company. You have been assigned the role of Customer.
+    </p>
+    <p>Please read the instructions carefully. You will be asked comprehension questions afterwards:</p>
+    <br>
+
+    <p>
+    In this study, participants assigned the role of Customer must select 5 workers who will complete a math quiz on their behalf. Customers cannot hand select the workers.
+  </p>
+<p>
+    Your task as the Company for this study is to select 5 workers out of 10 to create your Company. Then, Customers will choose 1 Company out of 3, to determine their 5 workers.
+</p>
+    <p>
+        The better the 5 chosen workers perform on the math quiz, the higher the Customer’s bonus payment. Therefore it is in the Customer’s best interest to select the Company with the 5 workers they believe will perform the best.
+    </p>
+    <p>
+        You will be paid a bonus that depends directly on how many Customers choose your Company. Therefore it is <b>in your best interest to select the 5 workers that you believe seem most appealing to Customers.</b>
+    </p>
+    <br>
+    <p>
+There are 10 potential workers, identified by 3 personal characteristics that they have disclosed: age, gender, and hobby. Each worker will be identified using these characteristics.
+For example, a 20-year old male worker who reported running as a hobby will be referred to as <20, M, running> for the entirety of this study.
+    </p>
+     <p>
+All 10 workers were recruited before this study was launched to ensure that the personal details are real. Your choice of workers directly affects which workers are paid. The workers that you choose to hire will be re-contacted and paid a wage after the completion of this study session. The workers that you do not choose will not receive any wage.    </p>
+
+
+</div>
+{% next_button %}
+{% endblock %}
+

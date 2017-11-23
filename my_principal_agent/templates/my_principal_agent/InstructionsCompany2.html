@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+
+{% load otree_tags %}
+
+{% block title %}Instructions{% endblock %}
+
+{% block content %}
+<div class="instructions well well-lg">
+
+    <p>
+There will be 10 rounds, and each round is of identical procedure. A round is complete once the Customer determines their 5 workers for that round. In each round, roles will stay the same but Companies will be able to change their choices of workers and Customers their choice of Company from prior rounds.
+    </p>
+    <p>
+At the completion of each round, you will be presented with all of the choices made
+        by each participant for that round. You will see the workers that you and the
+        2 other Company particiants chose, and how many Customers each Company was chosen
+        by. <b>This information can be informative of Customers’ preferences for certain
+        workers, and can help you make better choices in the next rounds.</b>   </p>
+    <br>
+    <p>
+One of the 10 rounds will be randomly selected at the completion of the study. The outcomes in that randomly selected round will be implemented and determine all players’ bonus payments. Therefore it is in your best interest to respond honestly to each round.    </p>
+    <p>
+        For your convenience, this diagram of the steps will be at the bottom of each page in this study:
+    </p>
+    {% include Constants.instructions_template %}
+
+</div>
+{% next_button %}
+{% endblock %}

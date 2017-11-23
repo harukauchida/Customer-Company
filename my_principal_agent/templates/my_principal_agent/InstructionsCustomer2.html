@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load otree_tags %}
+
+{% block title %}Instructions{% endblock %}
+
+{% block content %}
+<div class="instructions well well-lg">
+
+    <p>
+However, you cannot hand select the workers. You must choose 1 Company out of 3, each of which is comprised of 5 workers. Therefore before you select a Company, each participant assigned the role of Company will select 5 workers out of 10 to comprise of its Company. Then, you will be shown the Companies decisions, and you will select your preferred Company.    </p>
+    <p>
+Overlaps in workers between Companies are allowed, so a single worker can be selected by 0, 1, 2, or 3
+        Companies. Companies are paid a bonus based on how many customers it is chosen by;
+        therefore Companies must try to figure out which workers Customers prefer as <b>it is
+        in the Company’s best interest to select the 5 workers that they believe seem most
+        appealing for the Customer. </b>   </p>
+    <br>
+    <p>
+There will be 10 rounds, and each round is of identical procedure. A round is complete once the Customer determines their 5 chosen workers for that round. In each round, roles will stay the same but Companies will be able to change their choices of workers and Customers their choice of Company from prior rounds.    </p>
+    <p>
+One of the 10 rounds will be randomly selected at the completion of the study. The outcomes in that randomly selected round will be implemented and determine all players’ bonus payments. Therefore it is in your best interest to respond honestly to each round.    </p>
+    <p>
+        For your convenience, this diagram of the steps will be at the bottom of each page in this study:
+    </p>
+    {% include Constants.instructions_template %}
+
+</div>
+{% next_button %}
+{% endblock %}

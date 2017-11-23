@@ -1,0 +1,63 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        {% if player.role == 'customer' %}
+            You chose <strong>Company {{ player.customer_choose_company }}</strong>.
+        {% elif player.is_chosen %}
+            Customers <strong>chose</strong> your company.
+        {% else %}
+            Customers <strong>did not choose</strong> your company.
+        {% endif %}
+    </p>
+
+
+
+<br>
+
+{% if player.role != 'customer' %}
+<p>You are Company {{player.id_in_group}}. Here is what Companies did in this round:</p>
+<table class="table">
+    <tr>
+        {% for p in group.get_players %}
+            {% if 'company' in p.role %}
+            <th>Company {{p.id_in_group}}</th>
+            {% endif %}
+        {% endfor %}
+    </tr>
+    <tr>
+        {% for i in sorted_company_choices %}
+        <td>
+            {%for each in i %}
+            {{ each }}<BR>{% endfor %}
+        </td>
+        {% endfor %}
+    </tr>
+
+    <tr>
+    {% for p in group.get_players %}
+        {% if 'company' in p.role %}
+        <td>chosen by <strong>{{p.chosen_number}}</strong> customer(s)</td>
+        {% endif %}
+    {% endfor %}
+    </tr>
+</table>
+{% endif %}
+
+Now we will proceed to round {{next_round}}.
+<br>
+
+    <p>{% next_button %}</p>
+
+    {% include Constants.instructions_template %}
+        {% include Constants.all_workers_template %}
+
+
+{% endblock %}

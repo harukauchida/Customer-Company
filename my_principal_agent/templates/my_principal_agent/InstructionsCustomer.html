@@ -1,0 +1,36 @@
+
+{% extends "global/Page.html" %}
+{% load otree_tags %}
+
+{% block title %}Welcome to the study!{% endblock %}
+
+{% block content %}
+<div class="instructions well well-lg">
+
+    <h3 class="panel-sub-heading">
+        You have been assigned the role of Customer
+    </h3>
+    <br>
+    <p>
+        You have been matched randomly and anonymously with other study participants. There are two roles in this study: Customer and Company. You have been assigned the role of Customer.   </p>
+    <p>Please read the instructions carefully. You will be asked comprehension questions afterwards:</p>
+    <br>
+
+    <p>
+Your task as the Customer for this study is to select 5 workers out of 10 to complete a math quiz on your
+        behalf. You will be paid a bonus that depends directly on how well
+        your 5 chosen workers performed on a math quiz. Therefore it is <b>in your best interest to select
+        the 7 workers that they believe performed best on the math quizzes. </b>   </p>
+    <br>
+    <p>
+There are 10 potential workers, identified by 3 personal characteristics that they have disclosed: age, gender, and hobby. Each worker will be identified using these characteristics.
+For example, a 20-year old male worker who reported running as a hobby will be referred to as <20, M, running> for the entirety of this study.
+    </p>
+     <p>
+All 10 workers were recruited before this study was launched to ensure that the personal details are real. Your choice of workers directly affects which workers are paid. The workers that you choose to hire will be re-contacted and paid a wage after the completion of this study session. The workers that you do not choose will not receive any wage.    </p>
+
+
+</div>
+{% next_button %}
+{% endblock %}
+

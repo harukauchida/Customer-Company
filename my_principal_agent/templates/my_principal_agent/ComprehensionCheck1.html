@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Comprehension Questions
+{% endblock %}
+
+{% block content %}
+
+    <p>
+    Please answer the comprehension questions to ensure that you understand the general format of the study. You will have as many tries as you need.
+    </p>
+
+    {% formfield player.compre_workernumber with label="1. How many workers out of 10 must Customers ultimately hire to complete the math quiz?" %}
+
+    {% formfield player.compre_workercharacteristic with label="2. Which characteristic will workers NOT be identified by?" %}
+
+    {% formfield player.compre_workerpayment with label="3. How will the 10 workers be paid?" %}
+
+
+
+    {% next_button %}
+
+{% endblock %}

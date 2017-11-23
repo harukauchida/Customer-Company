@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Response
+{% endblock %}
+
+{% block content %}
+
+    <p>You are a <strong>customer</strong>. The company you can choose is comprised of the following employees:</p>
+
+    <table class='table text-center' style='width: auto; margin: auto'>
+        <tr><th>Company Description</th><
+        <tr><td>{{ group.company_choose_employee }}</td>
+    </table>
+
+    {% formfield group.company_chosen with label='Will you choose or reject the above company?' %}
+
+
+    <p>
+    {% next_button %}
+    </p>
+
+    {% include Constants.instructions_template %}
+
+{% endblock %}
+

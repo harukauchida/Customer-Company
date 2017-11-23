@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Create your company
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        You are <strong>Company</strong>. Please create a employee set for your customer.
+        <br>
+        You must hire exactly 5 employees.
+    </p>
+
+
+<table class="table">
+    <tr>
+        <th>Employee</th><th>Hire</th><th>Don't Hire</th>
+    </tr>
+    {% for number, employee in employees.items %}
+    <tr>
+        <td>{{ employee }}</td>
+        <td><input type="radio" name="hire_emp{{ number }}" value="True" required></td>
+        <td><input type="radio" name="hire_emp{{ number }}" value="False" required></td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+
+    {% next_button %}
+<br>
+<br>
+    {% include Constants.instructions_template %}
+        {% include Constants.all_workers_template %}
+
+{% endblock %}
+

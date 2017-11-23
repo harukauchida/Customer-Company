@@ -1,0 +1,48 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Choose your Company
+{% endblock %}
+
+{% block content %}
+
+    <p>You are a <strong>customer</strong>. The Companies you can choose have selected following employees.
+    <br>
+        Please select 1 company to determine which 5 workers out of the 10 will take the quiz on your behalf. You must select exactly 1.
+    </p>
+
+
+
+<br>
+<table class="table">
+    <tr>
+        {% for p in group.get_players %}
+            {% if 'company' in p.role %}
+            <th>Company {{p.id_in_group}}</th>
+            {% endif %}
+        {% endfor %}
+    </tr>
+    <tr>
+        {% for i in sorted_company_choices %}
+        <td>
+            {%for each in i %}
+            {{ each }}<BR>{% endfor %}
+        </td>
+        {% endfor %}
+    </tr>
+    <tr>
+        {% for choose in companies %}
+        <td><input type="checkbox" name="customer_choose_company" value="{{ choose }}"></td>
+        {% endfor %}
+    </tr>
+</table>
+
+    {% next_button %}
+
+
+    {% include Constants.instructions_template %}
+        {% include Constants.all_workers_template %}
+
+{% endblock %}
+

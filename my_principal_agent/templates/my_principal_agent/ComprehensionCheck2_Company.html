@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Role Comprehension Questions
+{% endblock %}
+
+{% block content %}
+    <p>
+    Please answer the comprehension questions to ensure that you understand your role as a Company.
+    </p>
+    <br>
+    {% formfield player.compre_yourbonus with label="1. How will your bonus payment be determined?" %}
+
+    {% formfield player.compre_customerchoose with label="2. How will a Customer determine which 7 workers they would like to base their bonus payment on?" %}
+
+    {% formfield player.compre_roundpayment with label="3. Which round determines payment?" %}
+
+    {% formfield player.compre_changerounds with label="4. Will you be able to change your worker choices for each of the 10 rounds?" %}
+
+
+
+    {% next_button %}
+
+{% endblock %}

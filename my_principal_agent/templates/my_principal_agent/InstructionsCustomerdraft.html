@@ -1,0 +1,23 @@
+
+{% extends "global/Page.html" %}
+{% load otree_tags %}
+
+{% block title %}You have been assigned the role of Customer.{% endblock %}
+
+{% block content %}
+<div class="instructions well well-lg">
+
+
+    <p>
+        Your task is to hire 7 workers whose math quiz scores will determine your bonus payment for this study. You will receive (fixed rate) simply for partaking in this study, but your bonus payment will depend directly on the performance of your workers. Therefore it is in your best interest to <b>select the 7 workers that you believe performed best in the math quizzes</b>.    </p>
+    <p>
+To reiterate, all workers were recruited before this study was launched to ensure that the personal details are real. The workers that you choose to hire will be re-contacted and paid after your completion of the study today    </p>
+    <br>
+    <p>
+You will determine the 7 workers that will take the math quiz on your behalf by selecting 1 company out of 3 possible companies.    </p>
+    <p>
+        Reminder: you will repeat the selecting process for 10 rounds. Your role will stay the same but you will <b>be able to change your choices in each round</b>, but also do not have to if you so desire. A randomly selected round will determine your actual outcomes, so it is in your best interest to answer honestly for every round.
+</div>
+{% next_button %}
+{% endblock %}
+
