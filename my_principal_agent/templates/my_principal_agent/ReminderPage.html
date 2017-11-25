@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+
+{% load otree_tags %}
+
+{% block title %}To Reiterate:{% endblock %}
+
+{% block content %}
+<div class="instructions well well-lg">
+
+
+    <ul>
+  <li>Customers will receive a higher bonus payment if their 5 workers of the chosen Company have a higher math score
+</li>
+<li>Companies will have a higher bonus payment the more Customers they attract</li>
+  <li>A random round will be chosen to determine payment
+</li>
+</ul>
+
+</div>
+{% next_button %}
+{% endblock %}
+
+    {% include Constants.instructions_template %}

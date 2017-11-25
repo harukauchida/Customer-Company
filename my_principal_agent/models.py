@@ -21,10 +21,11 @@ class Constants(BaseConstants):
     num_rounds = 2
 
     instructions_template = 'my_principal_agent/Instructions.html'
-    all_workers_template = 'my_principal_agent/All_workers.html'
+    all_workers_template = 'my_principal_agent/All_Workers.html'
     base_pay = c(5)
     company_chosen_pay = c(2)
     company_rejected_pay = c(0)
+    random_round_for_payment = 2
     #rn customer gets 1 no matter what
     customer_choose_pay = c(1)
 
@@ -66,6 +67,7 @@ class Group(BaseGroup):
 
 
     def set_payoffs(self):
+        #use random_round_for_payment'th round to determine payoff
         players = self.get_players()
         company = [p for p in players if p.role() == 'company']
         customer = [p for p in players if p.role() != 'company']
@@ -75,22 +77,30 @@ class Group(BaseGroup):
         #all chosen companies (eliminate redundance from company_choices)
         company_chosen = [p for p in company if p.id_in_group in company_choices]
 
+        #for every company that was chosen by a customer
         for p in company_chosen:
+            p.is_chosen = True
             p.chosen_number = 0
+            #loop over every customer
             for choose_once in customer:
+                #if that customer chose that company
                 if choose_once.customer_choose_company == p.id_in_group:
+                    #add one
                     p.chosen_number +=1
-
-        #calculate payment for chosen companies
-        for p in players:
-            if p in company:
-                if p in company_chosen:
-                    p.is_chosen = True
-                    p.payoff = Constants.company_chosen_pay
+        #only calculate payoffs for specified round
+        #p.chosen_number represents how many times that company was chosen in that round
+        if self.round_number == Constants.random_round_for_payment:
+            #calculate payment for chosen companies
+            for p in players:
+                if p in company:
+                    if p in company_chosen:
+                        #company payment is proportional to chosen number
+                        p.payoff = Constants.company_chosen_pay * p.chosen_number
+                    else:
+                        p.payoff = Constants.company_rejected_pay
+                #if is not a company (is a customer), get paid customer_choose_pay
                 else:
-                    p.payoff = Constants.company_rejected_pay
-            else:
-                p.payoff = Constants.customer_choose_pay
+                    p.payoff = Constants.customer_choose_pay
 
 
 

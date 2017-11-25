@@ -72,6 +72,10 @@ class ComprehensionCheck2_Customer(Page):
     form_model = models.Player
     form_fields = ['compre_customerbonus', 'compre_youchoose', 'compre_roundpayment','compre_changerounds']
 
+class ReminderPage(Page):
+    def is_displayed(self):
+        return self.round_number == 1
+
 #transition page
 class Before_MathQuestions(Page):
     def is_displayed(self):
@@ -120,6 +124,12 @@ class ResultsWaitPage(WaitPage):
 
 class Accept(Page):
 
+    #Customer must choose a Company.
+    def error_message(self, values):
+        if values["customer_choose_company"] <0:
+            return 'You must select a Company.'
+        if values["customer_choose_company"] > Constants.number_of_companies:
+            return 'You must select a single Company.'
     def vars_for_template(self):
         for p in self.group.get_players():
             chosen = []
@@ -160,6 +170,9 @@ class Accept(Page):
 
 
 class Results(Page):
+    def is_displayed(self):
+        return self.round_number != Constants.num_rounds
+
     def vars_for_template(self):
         #return sorted values for each company decision
         for p in self.group.get_players():
@@ -192,6 +205,7 @@ class Results(Page):
         return {'sorted_company_choices': sorted_company_choices, 'companies': Constants.customer_choose_company_choices, 'next_round': self.round_number + 1}
 
 
+
 class OverallResults(Page):
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
@@ -210,6 +224,7 @@ page_sequence = [
     ComprehensionCheck1,
     ComprehensionCheck2_Company,
     ComprehensionCheck2_Customer,
+    ReminderPage,
     Before_MathQuestions,
     MathQuestion_Samples,
     Show_All_Workers_Company,
@@ -222,4 +237,3 @@ page_sequence = [
     OverallResults
 ]
 
-#Instructions1 Instructions2

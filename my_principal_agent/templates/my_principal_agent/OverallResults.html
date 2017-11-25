@@ -3,38 +3,34 @@
 
 
 {% block title %}
-    Results
+    Thank you for completing the study!
 {% endblock %}
 
 {% block content %}
 
+    <p>
+        The seventh round was chosen to determine payment.
 
-        {% if group.company_chosen %}
-            <p>
-            {% if player.role == 'customer' %}
-            You chose the <strong>company</strong> .
-            {% else %}
-            The customer <strong>chose</strong> your company.
-            {% endif %}
-            <p>
-
-
-            <p>In addition to your initial {{ Constants.base_pay }}, your payoff is <strong>{{player.payoff}}</strong>.</p>
+        {% if player.role == 'customer' %}
+            You chose <strong>Company {{ player.customer_choose_company }}</strong>. <br>
+            Based on your workers' performance, your bonus payment is {{ player.payoff }}.
+        {% elif player.is_chosen %}
+            In the seventh round, {{ player.chosen_number }} customers <strong>chose</strong> your company.<br>
+            Therefore your bonus payment is {{ player.payoff }}.
         {% else %}
-            <p>
-            {% if player.role == 'customer' %}
-                You <strong>rejected</strong> the company.
-                Thus you received <strong>{{ Constants.customer_reject_pay }}</strong>.
-                Adding your initial {{ Constants.base_pay }}, your payoff is <strong>{{player.payoff}}</strong>.
-            {% else %}
-            The customer <strong>rejected</strong> your company.
-                Thus you have received nothing. Your payoff equals initial <strong>{{player.payoff}}</strong>.
-            {% endif %}
-            </p>
+            In the seventh round, customers <strong>did not choose</strong> your company.<br>
+            Therefore your bonus payment is {{ player.payoff }}.
         {% endif %}
+    </p>
+
+
+
+<br>
+
+
 
     <p>{% next_button %}</p>
 
-    {% include Constants.instructions_template %}
+
 
 {% endblock %}
