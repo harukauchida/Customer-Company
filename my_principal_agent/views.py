@@ -2,12 +2,13 @@ from otree.api import Currency as c, currency_range
 from . import models
 from ._builtin import Page, WaitPage
 from .models import Constants
-
+import random
 
 
 
 #role specific instructions
-class InstructionsCompany(Page):
+#class InstructionsCompany(Page):
+class InstructionsCompanyNew(Page):
     def is_displayed(self):
         return self.player.role() == 'company' and self.round_number == 1
 class InstructionsCompany2(Page):
@@ -104,7 +105,13 @@ class Offer(Page):
         if values["hire_emp1"] + values["hire_emp2"] + values["hire_emp3"] + values["hire_emp4"] + values["hire_emp5"] + values["hire_emp6"]+values["hire_emp7"]+values["hire_emp8"]+values["hire_emp9"]+values["hire_emp10"]!= 5:
             return 'You must hire exactly 5 workers'
     def vars_for_template(self):
-        return {'employees': Constants.company_choose_employee_choices, 'numbers': range(1,len(Constants.company_choose_employee_choices)+1)}
+        employee_dict = Constants.employee_IDs.copy()
+        random.shuffle(employee_dict)
+        employees = []
+        for i in employee_dict:
+            employees.append((i, Constants.company_choose_employee_choices[i]))
+        return {'employees': employees}
+        #'numbers': range(1,len(Constants.company_choose_employee_choices)+1)
     form_model = models.Player
     form_fields = ['hire_emp{}'.format(i) for i in range(1, len(Constants.company_choose_employee_choices)+1)]
 
@@ -216,8 +223,20 @@ class OverallResults(Page):
             #'effort_cost': cost_from_effort(self.group.agent_work_effort),
         }
 
+
+class Demographics(Page):
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds
+    form_model = models.Player
+    form_fields = ['age',
+                   'gender']
+
+class LastPage(Page):
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds
+
 page_sequence = [
-    InstructionsCompany,
+    InstructionsCompanyNew,
     InstructionsCompany2,
     InstructionsCustomer,
     InstructionsCustomer2,
@@ -234,6 +253,8 @@ page_sequence = [
     Accept,
     ResultsWaitPage,
     Results,
-    OverallResults
+    OverallResults,
+    Demographics,
+    LastPage
 ]
 

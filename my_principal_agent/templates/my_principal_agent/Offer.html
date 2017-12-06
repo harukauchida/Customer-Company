@@ -13,12 +13,11 @@
         You must hire exactly 5 employees.
     </p>
 
-
 <table class="table">
     <tr>
         <th>Employee</th><th>Hire</th><th>Don't Hire</th>
     </tr>
-    {% for number, employee in employees.items %}
+    {% for number, employee in employees %}
     <tr>
         <td>{{ employee }}</td>
         <td><input type="radio" name="hire_emp{{ number }}" value="True" required></td>
@@ -27,6 +26,7 @@
     </tr>
     {% endfor %}
 </table>
+
 
 <br>
 

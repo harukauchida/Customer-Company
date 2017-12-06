@@ -1,0 +1,62 @@
+{% extends "global/Page.html" %}
+{% load otree_tags %}
+
+{% block title %}Instructions{% endblock %}
+
+{% block content %}
+<div class="instructions well well-lg">
+     <p>
+         Please read the instructions carefully. You will be asked comprehension questions afterwards:
+     </p>
+    <br>
+
+    <p>
+You have been matched randomly and anonymously with other study participants. There are two roles in this study: Customer and Company. There are 5 Customers and 2 Companies.
+    </p>
+    <p>
+        <font size="+1"><b>You have been assigned the role of Company!</b></font>
+    </p>
+        <br>
+    <p>
+Prior to this experiment, 10 college students- who we will refer to as workers- have completed a math quiz.
+    </p>
+    <p>
+You as the Company are responsible for selecting 5 workers out of the 10 to offer to the 5 Customers in your session.
+        Your choice of workers will compete with the choices of the other Company for a bonus payment.
+        Your bonus payment depends directly on how many Customers choose your Company.
+    </p>
+<p>
+    <b>You will receive a bonus of $0.20 for every Customer that chooses your company. Therefore you may earn up to a $1 bonus.
+        If no Customers choose your Company, you will not earn a bonus.
+    </b></p>
+
+
+    <p>
+Customer are paid based on the math scores of their chosen Company’s 5 workers. The better the 5 chosen workers perform on the math quiz, the higher the Customer’s bonus payment.
+    </p>
+    <br>
+    <b>
+<ol>
+The game is as follows:
+<li>You as a Company choose your 5 workers.</li>
+<li>Customers will each choose a single Company.</li>
+</ol>
+        </b>
+   <br>
+    <p>
+        There will be 10 identical rounds, as presented in the figure below. For each round, roles will stay the same but choices can change. At the end of each round, you will be shown other Companies' choices of workers and how many Customers chose each Company.
+        This information can be informative of Customers’ preferences for certain workers, and can help you make better choices in the next rounds.
+
+    </p>
+    <p>
+        A single random round will be chosen to determine the bonus payment. The outcomes in that randomly selected round will be implemented and will determine all players’ bonus payments.
+    </p>
+<br><br>
+    <p>
+        For your convenience, this diagram of the steps will be at the bottom of each page in this study:
+    </p>
+    {% include Constants.instructions_template %}
+
+</div>
+{% next_button %}
+{% endblock %}

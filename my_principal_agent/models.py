@@ -18,12 +18,13 @@ class Constants(BaseConstants):
     #make sure to change number of participants in settings.py if change here
     players_per_group = 3
     number_of_companies = 2
-    num_rounds = 2
+    # add 1 to the number of times have customer choose workers
+    num_rounds = 2 + 1
 
     instructions_template = 'my_principal_agent/Instructions.html'
     all_workers_template = 'my_principal_agent/All_Workers.html'
-    base_pay = c(5)
-    company_chosen_pay = c(2)
+    base_pay = c(3)
+    company_chosen_pay = c(0.2)
     company_rejected_pay = c(0)
     random_round_for_payment = 2
     #rn customer gets 1 no matter what
@@ -42,6 +43,8 @@ class Constants(BaseConstants):
         9: '<22, F, Reading>',
         10: '<22, M, Cooking>'
     }
+    #list of key numbers for employee choices
+    employee_IDs = list(company_choose_employee_choices.keys())
 
     #number of companies
     customer_choose_company_choices = [1, 2]
@@ -89,18 +92,18 @@ class Group(BaseGroup):
                     p.chosen_number +=1
         #only calculate payoffs for specified round
         #p.chosen_number represents how many times that company was chosen in that round
-        if self.round_number == Constants.random_round_for_payment:
+        #if self.round_number == Constants.random_round_for_payment:
             #calculate payment for chosen companies
-            for p in players:
-                if p in company:
-                    if p in company_chosen:
+        for p in players:
+            if p in company:
+                if p in company_chosen:
                         #company payment is proportional to chosen number
-                        p.payoff = Constants.company_chosen_pay * p.chosen_number
-                    else:
-                        p.payoff = Constants.company_rejected_pay
-                #if is not a company (is a customer), get paid customer_choose_pay
+                    p.payoff = Constants.company_chosen_pay * p.chosen_number
                 else:
-                    p.payoff = Constants.customer_choose_pay
+                    p.payoff = Constants.company_rejected_pay
+                #if is not a company (is a customer), get paid customer_choose_pay
+            else:
+                p.payoff = Constants.customer_choose_pay
 
 
 
@@ -187,3 +190,11 @@ class Player(BasePlayer):
     #    verbose_name='Please choose which company you like most',
     #    widget=widgets.RadioSelectHorizontal(),
     #)
+    age = models.PositiveIntegerField(
+        verbose_name='What is your age?',
+        min=18, max=99)
+
+    gender = models.CharField(
+        choices=['Male', 'Female'],
+        verbose_name='What is your gender?',
+        widget=widgets.RadioSelect())

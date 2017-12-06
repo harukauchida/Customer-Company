@@ -79,7 +79,7 @@ mturk_hit_settings = {
     'frame_height': 500,
     'preview_template': 'global/MTurkPreview.html',
     'minutes_allotted_per_assignment': 60,
-    'expiration_hours': 3*24,  # 7 days
+    'expiration_hours': 3*24,  # 3 days
     # 'grant_qualification_id': 'YOUR_QUALIFICATION_ID_HERE',# to prevent retakes
     # to use qualification requirements, you need to uncomment the 'qualification' import
     # at the top of this file.
@@ -100,25 +100,14 @@ mturk_hit_settings = {
 
 SESSION_CONFIG_DEFAULTS = {
     'real_world_currency_per_point': 0.000,
-    'participation_fee': 2.00,
+    'participation_fee': 0.00,
     'doc': "",
     'mturk_hit_settings': mturk_hit_settings,
 }
 
 
 SESSION_CONFIGS = [
-    {
-        'name': 'my_public_goods',
-        'display_name': "Public Goods",
-        'num_demo_participants': 3,
-        'app_sequence': ['my_public_goods'],
-    },
-    {
-        'name': 'my_trust',
-        'display_name': "Trust Game",
-        'num_demo_participants': 2,
-        'app_sequence': ['my_trust'],
-    },
+
     {
         'name': 'my_principal_agent',
         'display_name': "Principal Agent",

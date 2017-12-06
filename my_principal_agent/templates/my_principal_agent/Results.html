@@ -12,9 +12,12 @@
         {% if player.role == 'customer' %}
             You chose <strong>Company {{ player.customer_choose_company }}</strong>.
         {% elif player.is_chosen %}
-            Customers <strong>chose</strong> your company.
+            <strong>{{ player.chosen_number }} customers chose</strong> your company.
+            <br>
+            If this round is randomly selected, you will earn {{ player.payoff }}.
         {% else %}
             Customers <strong>did not choose</strong> your company.
+            If this round is randomly selected, you will not earn a bonus.
         {% endif %}
     </p>
 
