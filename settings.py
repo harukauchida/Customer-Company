@@ -111,7 +111,7 @@ SESSION_CONFIGS = [
     {
         'name': 'my_principal_agent',
         'display_name': "Principal Agent",
-        'num_demo_participants': 3,
+        'num_demo_participants': 7,
         'app_sequence': ['my_principal_agent'],
     },
 ]

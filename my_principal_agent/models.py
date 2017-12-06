@@ -16,7 +16,7 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'my_principal_agent'
     #make sure to change number of participants in settings.py if change here
-    players_per_group = 3
+    players_per_group = 7
     number_of_companies = 2
     # add 1 to the number of times have customer choose workers
     num_rounds = 10 + 1
