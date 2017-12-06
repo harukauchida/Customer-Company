@@ -164,7 +164,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect()
     )
     compre_customerbonus = models.CharField(
-        choices=['Company will receive (rate) for if I select them in the randomly chosen round', 'Company will receive (rate) for every round I select them in'],
+        choices=['Company will receive $0.20 for if I select them in the randomly chosen round', 'Company will receive $0.20 for every round I select them in'],
         widget=widgets.RadioSelect()
     )
     compre_youchoose = models.CharField(
