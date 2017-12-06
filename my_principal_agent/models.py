@@ -19,7 +19,7 @@ class Constants(BaseConstants):
     players_per_group = 3
     number_of_companies = 2
     # add 1 to the number of times have customer choose workers
-    num_rounds = 2 + 1
+    num_rounds = 10 + 1
 
     instructions_template = 'my_principal_agent/Instructions.html'
     all_workers_template = 'my_principal_agent/All_Workers.html'
@@ -28,7 +28,7 @@ class Constants(BaseConstants):
     company_rejected_pay = c(0)
     random_round_for_payment = 2
     #rn customer gets 1 no matter what
-    customer_choose_pay = c(1)
+    customer_choose_pay = c(0.05)
 
     #employee choices
     company_choose_employee_choices ={
