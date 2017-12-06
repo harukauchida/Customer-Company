@@ -148,7 +148,7 @@ class Player(BasePlayer):
     )
 
     compre_yourbonus = models.CharField(
-        choices=['I will receive (rate) for every Customer that selects me in the randomly chosen round', 'I will receive (rate) for every Customer that selects me in every round'],
+        choices=['I will receive $0.20 for every Customer that selects me in the randomly chosen round', 'I will receive $0.20 for every Customer that selects me in every round'],
         widget=widgets.RadioSelect()
     )
     compre_customerchoose = models.CharField(
