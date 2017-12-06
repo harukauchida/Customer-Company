@@ -45,7 +45,7 @@ class ComprehensionCheck2_Company(Page):
         return self.player.role() == 'company' and self.round_number == 1
     #only allow participant to proceed if they get all answers correct (inifinite tries)
     def error_message(self, values):
-        if values["compre_yourbonus"] != 'I will receive (rate) for every Customer that selects me in the randomly chosen round':
+        if values["compre_yourbonus"] != 'I will receive $0.20 for every Customer that selects me in the randomly chosen round':
             return 'You did not answer question 1 correctly.'
         if values["compre_customerchoose"] != 'They select 1 Company, which is made up of 5 workers':
             return 'You did not answer question 2 correctly.'
@@ -62,7 +62,7 @@ class ComprehensionCheck2_Customer(Page):
         return self.player.role() == 'customer' and self.round_number == 1
     #only allow participant to proceed if they get all answers correct (inifinite tries)
     def error_message(self, values):
-        if values["compre_customerbonus"] != 'Company will receive (rate) for if I select them in the randomly chosen round':
+        if values["compre_customerbonus"] != 'Company will receive $0.20 for if I select them in the randomly chosen round':
             return 'You did not answer question 1 correctly.'
         if values["compre_youchoose"] != 'I choose 1 Company, which is made up of 5 workers':
             return 'You did not answer question 2 correctly.'
