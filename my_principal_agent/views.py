@@ -8,6 +8,13 @@ import random
 
 #role specific instructions
 #class InstructionsCompany(Page):
+class FirstWaitPage(WaitPage):
+    title_text = "Waiting for other participants to join study session"
+    group_by_arrival_time = True
+
+    def is_displayed(self):
+        return self.round_number == 1
+
 class InstructionsCompanyNew(Page):
     def is_displayed(self):
         return self.player.role() == 'company' and self.round_number == 1
@@ -236,6 +243,7 @@ class LastPage(Page):
         return self.round_number == Constants.num_rounds
 
 page_sequence = [
+    FirstWaitPage,
     InstructionsCompanyNew,
     InstructionsCompany2,
     InstructionsCustomer,
