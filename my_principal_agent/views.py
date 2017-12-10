@@ -10,7 +10,6 @@ import random
 #class InstructionsCompany(Page):
 class FirstWaitPage(WaitPage):
     title_text = "Waiting for other participants to join study session"
-    group_by_arrival_time = True
 
     def is_displayed(self):
         return self.round_number == 1
